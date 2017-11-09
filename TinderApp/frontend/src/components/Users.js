@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import  {connect } from 'react-redux'
 import {bindGoToLandingToDispatch} from '../actions/generalActions'
-export const MetricsItem = ({goToLanding, mostPopularColor, mostPopularManufacturer, averageDescriptionLength, ebayAveragePrice, amazonAveragePrice }) => {
+export const UsersItem = ({goToLanding, mostPopularColor, mostPopularManufacturer, averageDescriptionLength, ebayAveragePrice, amazonAveragePrice }) => {
   return  (
       <div>
           <input type="button" defaultValue="Home" onClick={goToLanding} id="LandingLink" />
@@ -49,4 +49,4 @@ export const MetricsItem = ({goToLanding, mostPopularColor, mostPopularManufactu
           return {
               goToLanding: () => bindGoToLandingToDispatch()(dispatch)
           }
-      })(MetricsItem)
+      })(UsersItem)

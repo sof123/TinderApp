@@ -6,6 +6,7 @@ export const Reducer = (state =  {
 	location: "Landing.js",
   mostPopularColor: "",
   averageLength: 0,
+	userList: [],
   mostPopularManufacturer: "",
 	visibilityFilter: 'SHOW_ALL'
 }, action) => {
@@ -23,6 +24,12 @@ export const Reducer = (state =  {
            amazonAveragePrice: action.payload[3]['amazonAveragePrice']
        }
      }
+		 case 'login':
+		 {
+			 return { ...state, nextId: state.nextId + 1, location: "Users.js",
+					userList: action.payload['users']
+			}
+		 }
 		default:
 			return {
 				...state,

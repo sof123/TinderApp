@@ -23,23 +23,15 @@ return (
       <div >
         <meta name="author" content="Stephen" />
           <input type="hidden" name="timeStamp" />
-        <table textAlign="center">
-          <tbody>
-            <tr>
-              <td>
-                <span id="AccountNameText"></span> <input type="button" defaultValue="Compute Results" id="update" onClick={doComputation} /><br />
-              </td>
-            </tr>
 
-          </tbody>
-        </table>
-
-  <FacebookLogin
-    appId="153778541904115"
-    autoLoad={true}
-    fields="name,email,picture"
-    onClick={componentClicked}
-    callback={responseFacebook} />
+        <FacebookLogin
+          appId="153778541904115"
+          autoLoad={true}
+          fields="name,email,picture"
+          onClick={componentClicked}
+          callback={responseFacebook}
+        />
+        
       </div>
 )
 }
