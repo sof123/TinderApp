@@ -1,6 +1,7 @@
 export const COMPUTE = "app/AMAZON"
 
 
+
 function isJSONResponse(r) {
   return r.headers.get('Content-Type').indexOf('json') > 0
 }

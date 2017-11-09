@@ -10,6 +10,17 @@ const bindDoComputationToDispatch = () => (dispatch) => {
 
 }
 
+const sendCredsAction = (userID, accessToken) => (dispatch) => {
+  const credsObject = {userID, accessToken}
+  console.log("in sendCreds action")
+  return  resource('POST', 'login', credsObject).then(r =>
+  (dispatch({
+    type: 'loginToDo',
+    //id: ownProps.id,
+    payload: r
+  })))
+}
+
 const bindGoToLandingToDispatch = () => (dispatch) => {
   dispatch({type: 'goToLandingToDo'})
 }
@@ -88,4 +99,4 @@ function computeMostPopular(dbFile, attribute, callback) {
   return {attribute: biggestAttribute, count: biggest, attributeType: attribute}
 }
 
-export {bindDoComputationToDispatch, bindGoToLandingToDispatch}
+export {bindDoComputationToDispatch, bindGoToLandingToDispatch, sendCredsAction}

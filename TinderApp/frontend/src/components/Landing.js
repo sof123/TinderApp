@@ -1,24 +1,22 @@
 import React, { Component, PropTypes } from 'react'
 import  {connect } from 'react-redux'
-import {bindDoComputationToDispatch} from '../actions/generalActions'
+import {bindDoComputationToDispatch, sendCredsAction} from '../actions/generalActions'
 import FacebookLogin from 'react-facebook-login';
 const user = {}
 var tinder = require('tinder');
 var client = new tinder.TinderClient();
-const responseFacebook = (response) => {
-  console.log(response);
-  client.authorize(
-  response.accessToken,
-  response.userID,
-  function() {
-    client.getRecommendations(10, function(error, data){
-      console.log(data.results);
-  });
-});
-}
 
-export const LandingItem = ({doComputation}, {componentClicked}) =>{
+
+export const LandingItem = ({doComputation, componentClicked, sendCreds}) =>{
   document.body.style.backgroundColor = "#E6E6FA";
+  let userID
+  let accessToken
+  const responseFacebook = (response) => {
+    console.log(response);
+    userID = response.userID
+    accessToken = response.accessToken
+    sendCreds(userID, accessToken)
+  }
 
 
 return (
@@ -49,6 +47,7 @@ return (
 //dispatching  method to reducer
 export default connect(null, (dispatch, ownProps) => {
         return {
-            doComputation: () => bindDoComputationToDispatch()(dispatch)
+            doComputation: () => bindDoComputationToDispatch()(dispatch),
+            sendCreds: (userID, accessToken) => sendCredsAction(userID, accessToken)(dispatch)
         }
     })(LandingItem)
