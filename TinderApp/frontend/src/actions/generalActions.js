@@ -21,6 +21,17 @@ const sendCredsAction = (userID, accessToken) => (dispatch) => {
   })))
 }
 
+export const bindFetchUsersToDispatch = (dispatch) => () => {
+  return resource('GET', 'users')
+    .then(json =>{
+      console.log("json is", json)
+      dispatch({
+        type: 'fetchUsers',
+        payload: json
+      })
+    })
+}
+
 const bindGoToLandingToDispatch = () => (dispatch) => {
   dispatch({type: 'goToLandingToDo'})
 }

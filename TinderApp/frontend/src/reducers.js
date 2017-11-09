@@ -24,10 +24,21 @@ export const Reducer = (state =  {
            amazonAveragePrice: action.payload[3]['amazonAveragePrice']
        }
      }
-		 case 'login':
+		 case 'loginSuccess':
 		 {
-			 return { ...state, nextId: state.nextId + 1, location: "Users.js",
-					userList: action.payload['users']
+			 return { ...state, nextId: state.nextId + 1, location: "Users.js"
+			}
+		 }
+
+		 case 'loginFailure':
+		 {
+			 return { ...state, nextId: state.nextId + 1, location: "Landing.js"
+ 			}
+		 }
+
+		 case 'fetchUsers':
+		 {
+			 return { ...state, nextId: state.nextId + 1, location: "Users.js", userList: action.payload['users']
 			}
 		 }
 		default:
